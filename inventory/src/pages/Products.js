@@ -1,10 +1,18 @@
 import React, { useContext } from 'react'
 import { DataContext } from '../context/DataContext'
 import { Link } from 'react-router-dom';
+import {filterdData} from "../Utils"
 
 export default function Products() {
-    const {state: {inventoryData, filters}} = useContext(DataContext)
+    const {state: {inventoryData, filters: {department, isLowStock, SortBy}}} = useContext(DataContext)
     console.log(inventoryData)
+
+    console.log(department)
+    
+    const filterAllProduct = filterdData(inventoryData, SortBy, isLowStock, department)
+    console.log(filterAllProduct)
+
+    
     
     return (
         <main className="px-3 py-7">
