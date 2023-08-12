@@ -1,19 +1,20 @@
 import React, { useContext } from 'react'
 import { DataContext } from '../context/DataContext'
+import { Link } from 'react-router-dom';
 
 export default function Products() {
-    const {state: {inventoryData}} = useContext(DataContext)
+    const {state: {inventoryData, filters}} = useContext(DataContext)
     console.log(inventoryData)
     
     return (
-        <main className="px-4 py-8">
-          <div className="mr-2 flex items-center justify-between p-2">
-            <h2 className="text-3xl font-bold">Products</h2>
+        <main className="px-3 py-7">
+          <div className="mr-2 flex items-center justify-between p-1">
+            <h2 className="text-2xl font-bold">Products</h2>
     
             <select
               name="department"
               id="department"
-              className="rounded border-2 border-gray-700 px-[5px]"
+              className="rounded border-2 border-gray-500 px-[5px]"
             >
               <option value="All">All Departments</option>
               <option value="Kitchen">Kitchen</option>
@@ -31,13 +32,20 @@ export default function Products() {
             <select
               name="sort"
               id="sort"
-              className="rounded border-2 border-gray-700 px-[5px]"
+              className="rounded border-2 border-gray-500 px-[5px]"
             >
               <option value="name">Name</option>
               <option value="price">Price</option>
               <option value="stock">Stock</option>
             </select>
-    
+        
+
+            <Link
+          to={"/new"}
+          className="rounded-md bg-blue-600 px-3 py-1 text-base text-slate-100 "
+        >
+          New
+        </Link>
             
           </div>
     
